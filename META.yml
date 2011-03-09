@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Geo-Coder-SimpleGeo
-version:            0.01
+version:            0.02
 abstract:           Geocode addresses with the SimpleGeo API
 author:
     - gray <gray@cpan.org>
@@ -14,7 +14,6 @@ requires:
     Encode:          0
     JSON:            2
     LWP::UserAgent:  0
-    Net::OAuth:      0.25
     URI:             1.36
 resources:
     repository:  http://github.com/gray/geo-coder-simplegeo
