@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Geo-Coder-SimpleGeo
-version:            0.02
+version:            0.03
 abstract:           Geocode addresses with the SimpleGeo API
 author:
     - gray <gray@cpan.org>

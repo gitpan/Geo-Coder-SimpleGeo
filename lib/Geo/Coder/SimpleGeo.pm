@@ -9,7 +9,7 @@ use JSON;
 use LWP::UserAgent;
 use URI;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 $VERSION = eval $VERSION;
 
 sub new {
@@ -28,7 +28,7 @@ sub new {
         $self->ua->set_my_handler(request_send  => $dump_sub);
         $self->ua->set_my_handler(response_done => $dump_sub);
     }
-    elsif ($self->{compress}) {
+    elsif (exists $self->{compress} ? $self->{compress} : 1) {
         $self->ua->default_header(accept_encoding => 'gzip,deflate');
     }
 
@@ -98,7 +98,7 @@ Geo::Coder::SimpleGeo - Geocode addresses with the SimpleGeo API
 The C<Geo::Coder::SimpleGeo> module provides an interface to the geocoding
 functionality of the SimpleGeo API.
 
-Note: as of version 0.02, OAuth autorization has been replaced the use of
+Note: as of version 0.02, OAuth autorization has been replaced by the use of
 the new JSONP token.
 
 =head1 METHODS
@@ -160,11 +160,6 @@ Accessor for the UserAgent object.
 =head1 SEE ALSO
 
 L<http://simplegeo.com/docs/>
-
-L<Geo::Coder::Bing>, L<Geo::Coder::Bing::Bulk>, L<Geo::Coder::Google>,
-L<Geo::Coder::Mapquest>, L<Geo::Coder::Multimap>, L<Geo::Coder::Navteq>,
-L<Geo::Coder::OSM>, L<Geo::Coder::PlaceFinder>, L<Geo::Coder::TomTom>,
-L<Geo::Coder::Yahoo>
 
 =head1 REQUESTS AND BUGS
 
