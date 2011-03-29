@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Geo-Coder-SimpleGeo
-version:            0.03
+version:            0.04
 abstract:           Geocode addresses with the SimpleGeo API
 author:
     - gray <gray@cpan.org>
@@ -13,7 +13,7 @@ build_requires:
 requires:
     Encode:          0
     JSON:            2
-    LWP::UserAgent:  0
+    LWP::UserAgent:  6.02
     URI:             1.36
 resources:
     repository:  http://github.com/gray/geo-coder-simplegeo
@@ -26,4 +26,5 @@ meta-spec:
     url:      http://module-build.sourceforge.net/META-spec-v1.4.html
     version:  1.4
 recommends:
-    JSON::XS:  2
+    JSON::XS:             2
+    LWP::Protocol::https:  6.02

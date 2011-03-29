@@ -9,11 +9,12 @@ use JSON;
 use LWP::UserAgent;
 use URI;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 $VERSION = eval $VERSION;
 
 sub new {
-    my ($class, %params) = @_;
+    my ($class, @params) = @_;
+    my %params = (@params % 2) ? (token => @params) : @params;
 
     croak q('token' is required) unless $params{token};
 
@@ -31,6 +32,9 @@ sub new {
     elsif (exists $self->{compress} ? $self->{compress} : 1) {
         $self->ua->default_header(accept_encoding => 'gzip,deflate');
     }
+
+    croak q('https' requires LWP::Protocol::https)
+        if $params{https} and not $self->ua->is_protocol_supported('https');
 
     return $self;
 }
@@ -59,6 +63,8 @@ sub geocode {
         q     => $location,
         token => $self->{token},
     );
+    $uri->scheme('https') if $self->{https};
+
     my $res = $self->{response} = $self->ua->get($uri);
     return unless $res->is_success;
 
